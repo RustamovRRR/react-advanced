@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 
-let a = 0;
 const UseStateCounter = () => {
-  const [count, setCount] = useState(a);
-  const counter = () => {
-    setCount(a++);
-  };
+  const [value, setValue] = useState(0);
+
   return (
     <>
-      <h1>{count}</h1>
-      <button
-        className="btn"
-        onClick={() => {
-          counter();
-        }}
-      >
-        increase
-      </button>
+      <section style={{ margin: "4rem 0" }}>
+        <h2>regular counter</h2>
+        <h1>{value}</h1>
+        <button className="btn" onClick={() => setValue(value - 1)}>
+          decrese
+        </button>
+        <button className="btn" onClick={() => setValue(0)}>
+          reset
+        </button>
+        <button className="btn" onClick={() => setValue(value + 1)}>
+          increase
+        </button>
+      </section>
     </>
   );
 };

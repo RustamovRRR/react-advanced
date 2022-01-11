@@ -21,9 +21,7 @@ const ControlledInputs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (person.firstName && person.email && person.age) {
-      setPeople((people) => {
-        return [...people, person];
-      });
+      setPeople([...people, person]);
       setPerson({ firstName: "", email: "", age: "" });
     }
   };
@@ -69,7 +67,7 @@ const ControlledInputs = () => {
         {people.map((person) => {
           const { age, firstName, email } = person;
           return (
-            <div className="item" key={email}>
+            <div className="item" key={age}>
               <h4>{firstName}</h4>
               <p>{email}</p>
               <p>{age}</p>

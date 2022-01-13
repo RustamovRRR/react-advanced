@@ -6,11 +6,17 @@ import React, { useEffect, useRef } from "react";
 
 const UseRefBasics = () => {
   const refContainer = useRef(null);
+  const divContainer = useRef(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(refContainer.current.value);
+    console.log(divContainer.current);
   };
-  console.log(refContainer);
+  useEffect(() => {
+    refContainer.current.focus();
+    divContainer.current.style.color = "red";
+  });
   return (
     <>
       <form className="form" onSubmit={handleSubmit}>
@@ -19,6 +25,7 @@ const UseRefBasics = () => {
           <button type="submit">submit</button>
         </div>
       </form>
+      <div ref={divContainer}>hello world</div>
     </>
   );
 };

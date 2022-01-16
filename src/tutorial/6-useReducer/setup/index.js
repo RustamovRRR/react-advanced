@@ -13,6 +13,13 @@ const reducer = (state, action) => {
       modalContent: "item added",
     };
   }
+  if (action.type === "NO_VALUE") {
+    return {
+      ...state,
+      isModalOpen: true,
+      modalContent: "please enter value",
+    };
+  }
   throw new Error("no mathcing error");
 };
 
@@ -29,10 +36,11 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name) {
-      const newItem = { id: new Date().getTime().toString() };
+      const newItem = { id: new Date().getTime().toString(), name };
       dispatch({ type: "ADD_ITEM", payLoad: newItem });
+      setName("");
     } else {
-      dispatch({ type: "RANDOM" });
+      dispatch({ type: "NO_VALUE" });
     }
   };
 
